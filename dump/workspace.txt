@@ -1,0 +1,248 @@
+# -*- coding: utf-8 -*-
+"""
+Simple example of subclassing GraphItem.
+"""
+import json
+
+import pyqtgraph as pg
+from pyqtgraph.Qt import QtCore, QtGui
+import numpy as np
+import random
+import math
+# Enable antialiasing for prettier plots
+pg.setConfigOptions(antialias=True)
+
+w = pg.GraphicsWindow()
+w.setWindowTitle('pyqtgraph example: CustomGraphItem')
+v = w.addViewBox()
+v.setAspectLocked()
+
+
+def debug (name,obj):
+    d = {}
+    for key,value in obj.items():
+        print('[{}] = [{}]'.format(key,value))
+    
+    
+
+
+NODE_RADIUS = 20
+LAYER_DISTANCE = 200
+MAX_TREE_ANGLE = 120
+
+class Node(QtGui.QGraphicsObject):
+    sigClicked = QtCore.pyqtSignal(float,float)
+    sigMoved = QtCore.pyqtSignal(float,float)
+    def __init__(self,center,radius,pen=QtGui.QPen(QtCore.Qt.white)):
+        
+        QtGui.QGraphicsObject.__init__(self)
+        self.center = center
+        self.radius = NODE_RADIUS
+        self.pen = pen
+        self.coordinate = (0,0)
+        print('create' , self.__repr__())
+    
+    def boundingRect(self):
+        rect = QtCore.QRectF(0, 0, self.radius, self.radius)
+        # rect.moveCenter(QtCore.QPointF(*self.center))
+        return rect
+
+    def paint(self, painter, option, widget):
+        painter.setPen(self.pen)
+        painter.drawEllipse(self.boundingRect())
+
+    def mousePressEvent(self, event):
+        print("event" , event)
+        p = event.pos()
+        self.sigClicked.emit(p.x(), p.y())
+        # QtGui.QGraphicsEllipseItem.mousePressEvent( event)
+        
+        debug('node' , self.__dict__)
+
+    def mouseMoveEvent (self,event):
+        print("event" , event)
+        p = event.pos()
+        self.sigMoved.emit(p.x(), p.y())
+        print('eeee' , event)
+
+    def onStartHovering(self):
+        global addCircle , removeCircle , v , w
+        gap = 1.5*self.radius/math.sqrt(2) * 5
+        addCircle = Node( (self.center[0]-gap,self.center[1]-gap) , self.radius*5 )
+        v.addItem(addCircle)
+        v.show()
+        print('add' , addCircle)
+        print('hover' , self)
+
+    def onLeftHovering(self):
+        print('left' , self)
+    
+    def __repr__(self):
+        return "Node" + str(self.center)
+
+
+addCircle = None
+removeCircle = None
+
+currentHoveringNode = None
+listNode = {}
+
+def distance(a,b):
+    x1 = a[0]
+    y1 = a[1]
+    
+    x2 = b[0]
+    y2 = b[1]
+
+    dx = x2 - x1
+    dy = y2 - y1
+    dsquared = dx**2 + dy**2
+    result = dsquared**0.5
+    return abs(result)
+
+
+def hoverController(evt):
+    global currentHoveringNode
+    pos = evt[0]
+    # pos = (evt[0].x() , evt[0].y())
+    mouseCoordinate = (v.mapSceneToView(pos).x() , v.mapSceneToView(pos).y())
+    for children in v.allChildren():
+        if isinstance(children,Node):
+            if currentHoveringNode == None :
+                if distance (children.center,mouseCoordinate) < children.radius :
+                    if currentHoveringNode != children :
+                        children.onStartHovering()
+                        currentHoveringNode = children
+                    return
+    
+    # not belong to any node
+    if currentHoveringNode != None :
+        if distance (currentHoveringNode.center,mouseCoordinate) > currentHoveringNode.radius :
+            currentHoveringNode.onLeftHovering()
+            currentHoveringNode = None
+
+            
+                
+
+    
+
+
+proxy = pg.SignalProxy(v.scene().sigMouseMoved, rateLimit = 60, slot = hoverController)
+
+
+
+circle = Node((0.0,0.0), 0.0)
+cirl = Node((100.0,0.0), 0.0)
+v.addItem(circle)
+v.addItem(cirl)
+
+
+
+
+
+## Start Qt event loop unless running in interactive mode or using pyside.
+if __name__ == '__main__':
+
+
+
+
+    import sys
+    if (sys.flags.interactive != 1) or not hasattr(QtCore, 'PYQT_VERSION'):
+        QtGui.QApplication.instance().exec_()
+
+
+# -*- coding: utf-8 -*-
+## Add path to library (just for examples; you do not need this)
+
+from pyqtgraph.Qt import QtCore, QtGui
+import pyqtgraph as pg
+from pyqtgraph.GraphicsScene import GraphicsScene
+
+app = QtGui.QApplication([])
+win = pg.GraphicsView()
+win.show()
+
+
+NODE_RADIUS = 20
+LAYER_DISTANCE = 200
+MAX_TREE_ANGLE = 120
+
+class Node(QtGui.QGraphicsObject):
+    sigClicked = QtCore.pyqtSignal(float,float)
+    sigMoved = QtCore.pyqtSignal(float,float)
+    def __init__(self,center,radius,pen=QtGui.QPen(QtCore.Qt.white)):
+        
+        QtGui.QGraphicsObject.__init__(self)
+        self.center = center
+        self.radius = NODE_RADIUS
+        self.pen = pen
+        self.coordinate = (0,0)
+        print('create' , self.__repr__())
+    
+    def boundingRect(self):
+        rect = QtCore.QRectF(0, 0, self.radius, self.radius)
+        # rect.moveCenter(QtCore.QPointF(*self.center))
+        return rect
+
+    def paint(self, painter, option, widget):
+        painter.setPen(self.pen)
+        painter.drawEllipse(self.boundingRect())
+
+    def mousePressEvent(self, event):
+        print("event" , event)
+        p = event.pos()
+        self.sigClicked.emit(p.x(), p.y())
+        # QtGui.QGraphicsEllipseItem.mousePressEvent( event)
+        
+
+    def mouseMoveEvent (self,event):
+        print("event" , event)
+        p = event.pos()
+        self.sigMoved.emit(p.x(), p.y())
+        print('eeee' , event)
+
+    def onStartHovering(self):
+        global addCircle , removeCircle , v , w
+        gap = 1.5*self.radius/math.sqrt(2) * 5
+        addCircle = Node( (self.center[0]-gap,self.center[1]-gap) , self.radius*5 )
+        v.addItem(addCircle)
+        v.show()
+        print('add' , addCircle)
+        print('hover' , self)
+
+    def onLeftHovering(self):
+        print('left' , self)
+    
+    def __repr__(self):
+        return "Node" + str(self.center)
+
+
+vb = pg.ViewBox()
+win.setCentralItem(vb)
+
+import random
+
+for i in range(random.randrange(100)):
+    obj = Node ( (random.randrange(200),random.randrange(200) ),random.randrange(200))
+    viewbox = pg.ViewBox()
+    viewbox.addItem(obj)
+
+
+def clicked():
+    print("button click")
+btn = QtGui.QPushButton("BTN")
+btn.clicked.connect(clicked)
+prox = QtGui.QGraphicsProxyWidget()
+prox.setWidget(btn)
+prox.setPos(100,0)
+# vb.addItem(prox)
+
+g = pg.GridItem()
+vb.addItem(g)
+
+
+## Start Qt event loop unless running in interactive mode.
+if __name__ == '__main__':
+    import sys
+    if (sys.flags.interactive != 1) or not hasattr(QtCore, 'PYQT_VERSION'):
+        QtGui.QApplication.instance().exec_()

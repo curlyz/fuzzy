@@ -1,0 +1,564 @@
+{
+    "O": {
+        "Level": 0,
+        "Child": [
+            "Capacity",
+            "Cost",
+            "Shipping",
+            "Quality",
+            "Ethics"
+        ],
+        "Matrix": [
+            [
+                0,
+                2,
+                0,
+                2,
+                7
+            ],
+            [
+                7,
+                0,
+                7,
+                0,
+                7
+            ],
+            [
+                0,
+                2,
+                0,
+                7,
+                7
+            ],
+            [
+                7,
+                0,
+                2,
+                0,
+                7
+            ],
+            [
+                2,
+                2,
+                2,
+                2,
+                0
+            ]
+        ]
+    },
+    "Capacity": {
+        "Level": 1,
+        "Child": [
+            "Quantity/year",
+            "Technology",
+            "Financial"
+        ],
+        "Matrix": [
+            [
+                0,
+                0,
+                2
+            ],
+            [
+                0,
+                0,
+                2
+            ],
+            [
+                7,
+                7,
+                0
+            ]
+        ]
+    },
+    "Cost": {
+        "Level": 1,
+        "Child": [
+            "Basecost",
+            "Laborcost",
+            "Tax"
+        ],
+        "Matrix": [
+            [
+                0,
+                8,
+                7
+            ],
+            [
+                3,
+                0,
+                0
+            ],
+            [
+                2,
+                0,
+                0
+            ]
+        ]
+    },
+    "Shipping": {
+        "Level": 1,
+        "Child": [
+            "Logisticsskill",
+            "Location",
+            "Securities"
+        ],
+        "Matrix": [
+            [
+                0,
+                3,
+                0
+            ],
+            [
+                8,
+                0,
+                8
+            ],
+            [
+                0,
+                3,
+                0
+            ]
+        ]
+    },
+    "Quality": {
+        "Level": 1,
+        "Child": [
+            "Qualitytest",
+            "Laborskill",
+            "Control"
+        ],
+        "Matrix": [
+            [
+                0,
+                0,
+                2
+            ],
+            [
+                0,
+                0,
+                2
+            ],
+            [
+                7,
+                7,
+                0
+            ]
+        ]
+    },
+    "Ethics": {
+        "Level": 1,
+        "Child": [
+            "WorkingEnvironment",
+            "LeaderSkill",
+            "WasteTreatment"
+        ],
+        "Matrix": [
+            [
+                0,
+                7,
+                0
+            ],
+            [
+                2,
+                0,
+                2
+            ],
+            [
+                0,
+                7,
+                0
+            ]
+        ]
+    },
+    "Quantity/year": {
+        "Level": 2,
+        "Child": [
+            "ATLS0",
+            "ATLS1",
+            "ATLS2"
+        ],
+        "Matrix": [
+            [
+                0,
+                2,
+                2
+            ],
+            [
+                7,
+                0,
+                7
+            ],
+            [
+                7,
+                2,
+                0
+            ]
+        ]
+    },
+    "Technology": {
+        "Level": 2,
+        "Child": [
+            "ATLS0",
+            "ATLS1",
+            "ATLS2"
+        ],
+        "Matrix": [
+            [
+                0,
+                7,
+                0
+            ],
+            [
+                2,
+                0,
+                2
+            ],
+            [
+                0,
+                7,
+                0
+            ]
+        ]
+    },
+    "Financial": {
+        "Level": 2,
+        "Child": [
+            "ATLS0",
+            "ATLS1",
+            "ATLS2"
+        ],
+        "Matrix": [
+            [
+                0,
+                0,
+                2
+            ],
+            [
+                0,
+                0,
+                2
+            ],
+            [
+                7,
+                7,
+                0
+            ]
+        ]
+    },
+    "Basecost": {
+        "Level": 2,
+        "Child": [
+            "ATLS0",
+            "ATLS1",
+            "ATLS2"
+        ],
+        "Matrix": [
+            [
+                0,
+                2,
+                5
+            ],
+            [
+                7,
+                0,
+                2
+            ],
+            [
+                10,
+                7,
+                0
+            ]
+        ]
+    },
+    "Laborcost": {
+        "Level": 2,
+        "Child": [
+            "ATLS0",
+            "ATLS1",
+            "ATLS2"
+        ],
+        "Matrix": [
+            [
+                0,
+                0,
+                2
+            ],
+            [
+                0,
+                0,
+                7
+            ],
+            [
+                7,
+                2,
+                0
+            ]
+        ]
+    },
+    "Tax": {
+        "Level": 2,
+        "Child": [
+            "ATLS0",
+            "ATLS1",
+            "ATLS2"
+        ],
+        "Matrix": [
+            [
+                0,
+                0,
+                2
+            ],
+            [
+                0,
+                0,
+                2
+            ],
+            [
+                7,
+                7,
+                0
+            ]
+        ]
+    },
+    "Logisticsskill": {
+        "Level": 2,
+        "Child": [
+            "ATLS0",
+            "ATLS1",
+            "ATLS2"
+        ],
+        "Matrix": [
+            [
+                0,
+                2,
+                3
+            ],
+            [
+                7,
+                0,
+                2
+            ],
+            [
+                8,
+                7,
+                0
+            ]
+        ]
+    },
+    "Location": {
+        "Level": 2,
+        "Child": [
+            "ATLS0",
+            "ATLS1",
+            "ATLS2"
+        ],
+        "Matrix": [
+            [
+                0,
+                7,
+                8
+            ],
+            [
+                2,
+                0,
+                8
+            ],
+            [
+                3,
+                3,
+                0
+            ]
+        ]
+    },
+    "Securities": {
+        "Level": 2,
+        "Child": [
+            "ATLS0",
+            "ATLS1",
+            "ATLS2"
+        ],
+        "Matrix": [
+            [
+                0,
+                7,
+                4
+            ],
+            [
+                2,
+                0,
+                2
+            ],
+            [
+                9,
+                7,
+                0
+            ]
+        ]
+    },
+    "Qualitytest": {
+        "Level": 2,
+        "Child": [
+            "ATLS0",
+            "ATLS1",
+            "ATLS2"
+        ],
+        "Matrix": [
+            [
+                0,
+                0,
+                2
+            ],
+            [
+                0,
+                0,
+                2
+            ],
+            [
+                7,
+                7,
+                0
+            ]
+        ]
+    },
+    "Laborskill": {
+        "Level": 2,
+        "Child": [
+            "ATLS0",
+            "ATLS1",
+            "ATLS2"
+        ],
+        "Matrix": [
+            [
+                0,
+                2,
+                2
+            ],
+            [
+                7,
+                0,
+                7
+            ],
+            [
+                7,
+                2,
+                0
+            ]
+        ]
+    },
+    "Control": {
+        "Level": 2,
+        "Child": [
+            "ATLS0",
+            "ATLS1",
+            "ATLS2"
+        ],
+        "Matrix": [
+            [
+                0,
+                7,
+                0
+            ],
+            [
+                2,
+                0,
+                7
+            ],
+            [
+                0,
+                2,
+                0
+            ]
+        ]
+    },
+    "WorkingEnvironment": {
+        "Level": 2,
+        "Child": [
+            "ATLS0",
+            "ATLS1",
+            "ATLS2"
+        ],
+        "Matrix": [
+            [
+                0,
+                10,
+                7
+            ],
+            [
+                5,
+                0,
+                2
+            ],
+            [
+                2,
+                7,
+                0
+            ]
+        ]
+    },
+    "LeaderSkill": {
+        "Level": 2,
+        "Child": [
+            "ATLS0",
+            "ATLS1",
+            "ATLS2"
+        ],
+        "Matrix": [
+            [
+                0,
+                0,
+                2
+            ],
+            [
+                0,
+                0,
+                3
+            ],
+            [
+                7,
+                8,
+                0
+            ]
+        ]
+    },
+    "WasteTreatment": {
+        "Level": 2,
+        "Child": [
+            "ATLS0",
+            "ATLS1",
+            "ATLS2"
+        ],
+        "Matrix": [
+            [
+                0,
+                2,
+                0
+            ],
+            [
+                7,
+                0,
+                3
+            ],
+            [
+                0,
+                8,
+                0
+            ]
+        ]
+    },
+    "ATLS0": {
+        "Level": 3,
+        "Child": [],
+        "Matrix": []
+    },
+    "ATLS1": {
+        "Level": 3,
+        "Child": [],
+        "Matrix": []
+    },
+    "ATLS2": {
+        "Level": 3,
+        "Child": [],
+        "Matrix": []
+    }
+}

@@ -1,0 +1,4 @@
+ATLS0	{'name': 'ATLS0', 'matrix': [], 'level': -1, 'child': [], 'isManufacturer': False, 'parent': None}
+ATLS1	{'name': 'ATLS1', 'matrix': [], 'level': -1, 'child': [], 'isManufacturer': False, 'parent': None}
+ATLS2	{'name': 'ATLS2', 'matrix': [], 'level': -1, 'child': [], 'isManufacturer': False, 'parent': None}
+O	{'name': 'O', 'matrix': [], 'level': 0, 'child': [], 'isManufacturer': False, 'parent': None}

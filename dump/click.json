@@ -1,0 +1,1 @@
+{'name': 'O', 'matrix': [[4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4]], 'level': 0, 'child': [Node(Capacity), Node(Cost), Node(Shipping), Node(Quality), Node(Ethics), Node(dfxbc), Node(x )], 'isManufacturer': False, 'parent': None}

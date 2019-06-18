@@ -1,0 +1,26 @@
+ATLS0	{'name': 'ATLS0', 'matrix': [], 'level': 3, 'child': [], 'isManufacturer': False, 'parent': Node(dfxbc)}
+ATLS1	{'name': 'ATLS1', 'matrix': [], 'level': 3, 'child': [], 'isManufacturer': False, 'parent': Node(dfxbc)}
+ATLS2	{'name': 'ATLS2', 'matrix': [], 'level': 3, 'child': [], 'isManufacturer': False, 'parent': Node(dfxbc)}
+Quantity/year	{'name': 'Quantity/year', 'matrix': [[0, 2, 2], [7, 0, 7], [7, 2, 0]], 'level': 2, 'child': [Node(ATLS0), Node(ATLS1), Node(ATLS2)], 'isManufacturer': False, 'parent': Node(Capacity)}
+Technology	{'name': 'Technology', 'matrix': [[0, 7, 0], [2, 0, 2], [0, 7, 0]], 'level': 2, 'child': [Node(ATLS0), Node(ATLS1), Node(ATLS2)], 'isManufacturer': False, 'parent': Node(Capacity)}
+Financial	{'name': 'Financial', 'matrix': [[0, 0, 2], [0, 0, 2], [7, 7, 0]], 'level': 2, 'child': [Node(ATLS0), Node(ATLS1), Node(ATLS2)], 'isManufacturer': False, 'parent': Node(Capacity)}
+Basecost	{'name': 'Basecost', 'matrix': [[0, 2, 5], [7, 0, 2], [10, 7, 0]], 'level': 2, 'child': [Node(ATLS0), Node(ATLS1), Node(ATLS2)], 'isManufacturer': False, 'parent': Node(Cost)}
+Laborcost	{'name': 'Laborcost', 'matrix': [[0, 0, 2], [0, 0, 7], [7, 2, 0]], 'level': 2, 'child': [Node(ATLS0), Node(ATLS1), Node(ATLS2)], 'isManufacturer': False, 'parent': Node(Cost)}
+Tax	{'name': 'Tax', 'matrix': [[0, 0, 2], [0, 0, 2], [7, 7, 0]], 'level': 2, 'child': [Node(ATLS0), Node(ATLS1), Node(ATLS2)], 'isManufacturer': False, 'parent': Node(Cost)}
+Logisticsskill	{'name': 'Logisticsskill', 'matrix': [[0, 2, 3], [7, 0, 2], [8, 7, 0]], 'level': 2, 'child': [Node(ATLS0), Node(ATLS1), Node(ATLS2)], 'isManufacturer': False, 'parent': Node(Shipping)}
+Location	{'name': 'Location', 'matrix': [[0, 7, 8], [2, 0, 8], [3, 3, 0]], 'level': 2, 'child': [Node(ATLS0), Node(ATLS1), Node(ATLS2)], 'isManufacturer': False, 'parent': Node(Shipping)}
+Securities	{'name': 'Securities', 'matrix': [[0, 7, 4], [2, 0, 2], [9, 7, 0]], 'level': 2, 'child': [Node(ATLS0), Node(ATLS1), Node(ATLS2)], 'isManufacturer': False, 'parent': Node(Shipping)}
+Qualitytest	{'name': 'Qualitytest', 'matrix': [[0, 0, 2], [0, 0, 2], [7, 7, 0]], 'level': 2, 'child': [Node(ATLS0), Node(ATLS1), Node(ATLS2)], 'isManufacturer': False, 'parent': Node(Quality)}
+Laborskill	{'name': 'Laborskill', 'matrix': [[0, 2, 2], [7, 0, 7], [7, 2, 0]], 'level': 2, 'child': [Node(ATLS0), Node(ATLS1), Node(ATLS2)], 'isManufacturer': False, 'parent': Node(Quality)}
+Control	{'name': 'Control', 'matrix': [[0, 7, 0], [2, 0, 7], [0, 2, 0]], 'level': 2, 'child': [Node(ATLS0), Node(ATLS1), Node(ATLS2)], 'isManufacturer': False, 'parent': Node(Quality)}
+WorkingEnvironment	{'name': 'WorkingEnvironment', 'matrix': [[0, 10, 7], [5, 0, 2], [2, 7, 0]], 'level': 2, 'child': [Node(ATLS0), Node(ATLS1), Node(ATLS2)], 'isManufacturer': False, 'parent': Node(Ethics)}
+LeaderSkill	{'name': 'LeaderSkill', 'matrix': [[0, 0, 2], [0, 0, 3], [7, 8, 0]], 'level': 2, 'child': [Node(ATLS0), Node(ATLS1), Node(ATLS2)], 'isManufacturer': False, 'parent': Node(Ethics)}
+WasteTreatment	{'name': 'WasteTreatment', 'matrix': [[0, 2, 0], [7, 0, 3], [0, 8, 0]], 'level': 2, 'child': [Node(ATLS0), Node(ATLS1), Node(ATLS2)], 'isManufacturer': False, 'parent': Node(Ethics)}
+Capacity	{'name': 'Capacity', 'matrix': [[0, 0, 2], [0, 0, 2], [7, 7, 0]], 'level': 1, 'child': [Node(Quantity/year), Node(Technology), Node(Financial)], 'isManufacturer': False, 'parent': Node(O)}
+Cost	{'name': 'Cost', 'matrix': [[0, 8, 7], [3, 0, 0], [2, 0, 0]], 'level': 1, 'child': [Node(Basecost), Node(Laborcost), Node(Tax)], 'isManufacturer': False, 'parent': Node(O)}
+Shipping	{'name': 'Shipping', 'matrix': [[0, 3, 0], [8, 0, 8], [0, 3, 0]], 'level': 1, 'child': [Node(Logisticsskill), Node(Location), Node(Securities)], 'isManufacturer': False, 'parent': Node(O)}
+Quality	{'name': 'Quality', 'matrix': [[0, 0, 2], [0, 0, 2], [7, 7, 0]], 'level': 1, 'child': [Node(Qualitytest), Node(Laborskill), Node(Control)], 'isManufacturer': False, 'parent': Node(O)}
+Ethics	{'name': 'Ethics', 'matrix': [[0, 7, 0], [2, 0, 2], [0, 7, 0]], 'level': 1, 'child': [Node(WorkingEnvironment), Node(LeaderSkill), Node(WasteTreatment)], 'isManufacturer': False, 'parent': Node(O)}
+O	{'name': 'O', 'matrix': [[4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4]], 'level': 0, 'child': [Node(Capacity), Node(Cost), Node(Shipping), Node(Quality), Node(Ethics), Node(dfxbc)], 'isManufacturer': False, 'parent': None}
+dfxbc	{'name': 'dfxbc', 'matrix': [[4, 4, 4], [4, 4, 4], [4, 4, 4]], 'level': 1, 'child': [Node(ATLS0), Node(ATLS1), Node(ATLS2)], 'isManufacturer': True, 'parent': Node(O)}
+x 	[]

@@ -1,0 +1,6 @@
+ATLS0	{'name': 'ATLS0', 'matrix': [], 'level': -1, 'child': [], 'isManufacturer': False, 'parent': Node(asd)}
+ATLS1	{'name': 'ATLS1', 'matrix': [], 'level': -1, 'child': [], 'isManufacturer': False, 'parent': Node(asd)}
+ATLS2	{'name': 'ATLS2', 'matrix': [], 'level': -1, 'child': [], 'isManufacturer': False, 'parent': Node(asd)}
+O	{'name': 'O', 'matrix': [[4]], 'level': 0, 'child': [Node(asd)], 'isManufacturer': False, 'parent': None}
+asd	{'name': 'asd', 'matrix': [[4, 4, 4], [4, 4, 4], [4, 4, 4]], 'level': 1, 'child': [Node(ATLS0), Node(ATLS1), Node(ATLS2)], 'isManufacturer': True, 'parent': Node(O)}
+bsa	[4, 4, 4]

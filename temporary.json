@@ -1,0 +1,4 @@
+Name;Parent;Level;Child;Matrix
+bsa;O;1;{ATLS};{[(vsx),(vsx),(vsx)],[(vsx),(vsx),(vsx)],[(vsx),(vsx),(vsx)]}
+asd;O;1;{ATLS};{[(vsx),(vsx),(vsx)],[(vsx),(vsx),(vsx)],[(vsx),(vsx),(vsx)]}
+O;Root;0;{asd,bsa};{[(vsx),(vsx)],[(vsx),(vsx)]}

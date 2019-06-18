@@ -1,0 +1,6 @@
+Name ; Parent; Level; Child; Matrix
+O;0;0;{A,B,C,D};{[(eqx),(esx),(vsx),(vsx)],[(esr),(eqx),(wkx),(esr)],[(vsr),(wkr),(eqx),(wkr)],[(vsr),(esx),(wkx),(eqx)]}
+A;Root;1;{ALTS};{[(eqx),(esx),(wkx)],[(esr),(eqx),(wkr)],[(wkr),(wkx),(eqx)]}
+B;Root;1;{ALTS};{[(eqx),(esr),(wkr)],[(esx),(eqx),(wkx)],[(wkx),(wkr),(eqx)]}
+C;Root;1;{ALTS};{[(eqx),(wkr),(esr)],[(wkx),(eqx),(vsr)],[(esx),(vsx),(eqx)]}
+D;Root;1;{ALTS};{[(eqx),(vsx),(vsx)],[(wkr),(eqx),(vsr)],[(vsr),(vsx),(eqx)]}

@@ -1,0 +1,1 @@
+{'name': 'O', 'matrix': [[4, 4], [4, 4]], 'level': 0, 'child': [Node(asd), Node(bsa)], 'isManufacturer': False, 'parent': None}

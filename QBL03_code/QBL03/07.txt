@@ -1,0 +1,113 @@
+intnb_supplier=...;
+intnb_warehouse=...;
+intnb_retailer=...;
+intnb_product=...;
+intnb_time=...;
+intnb_level_marketing=...;
+
+rangesup=1..nb_supplier;
+rangewar=1..nb_warehouse;
+rangerel=1..nb_retailer;
+rangepro=1..nb_product;
+rangetim=0..nb_time;
+rangelev=1..nb_level_marketing;
+
+rangetempcp_range=1..nb_product*nb_supplier;
+rangetempcaps_range=1..nb_product*nb_supplier;
+rangetempdemand_range=1..nb_product*nb_retailer;
+
+//---Parameters---//
+//temptransfers
+floattempcp[tempcp_range][tim]=...;
+floattempcaps[tempcaps_range][tim]=...;
+floattempdemand[tempdemand_range][tim]=...;
+
+//supplierlevel
+floatcp[iinpro][sinsup][tintim]=tempcp[(i-1)*nb_supplier+s][t];
+floatctw[sup][war]=...;
+floatcm[lev][pro]=...;
+floatem[lev][pro]=...;
+floatcaps[iinpro][sinsup][tintim]=tempcaps[(i-1)*nb_supplier+s][t];
+floatb=...;
+
+
+//warehouselevel
+floatchw=...;
+floatcmw[war][tim]=...;
+floatctr[war][rel]=...;
+floatcrw[war][tim]=...;
+floatcapw[war]=...;
+
+//retail
+floatchr=...;
+floatcmr[rel][tim]=...;
+floatcrr[rel][tim]=...;
+floatcapr[rel]=...;
+floatprice[pro][tim]=...;
+floatdemand[iinpro][rinrel][tintim]=tempdemand[(i-1)*nb_retailer+r][t];
+//---Parameters---//
+
+//---Decisionvariable---//
+//supplierlevel
+dvarfloat+qw[pro][sup][war][tim];
+dvarbooleanm[lev][pro][tim];
+
+//warehouselevel
+dvarfloat+iw[pro][war][tim];
+dvarfloat+aiw[pro][war][tim];
+dvarfloat+qr[pro][war][sup][tim];
+
+//retaillevel
+dvarfloat+sale[pro][rel][tim];
+dvarfloat+lostsale[pro][rel][tim];
+dvarfloat+ir[pro][rel][tim];
+dvarfloat+air[pro][rel][tim];
+//---Decisionvariable---//
+
+//---expression---//
+dexprfloatsupplier_cost=sum(iinpro,sinsup,winwar,tintim:t>=1)cp[i][s][t]*qw[i][s][w][t]
+							+sum(iinpro,sinsup,winwar,tintim:t>=1)ctw[s][w]*qw[i][s][w][t]
+							+sum(linlev,iinpro,tintim:t>=1)cm[l][i]*m[l][i][t];
+dexprfloatwarehouse_cost=sum(winwar,tintim:t>=1)crw[w][t]
+							+sum(winwar,tintim:t>=1)cmw[w][t]
+							+sum(iinpro,winwar,tintim:t>=1)chw*price[i][t]*aiw[i][w][t]
+							+sum(iinpro,winwar,rinrel,tintim:t>=1)ctr[w][r]*qr[i][w][r][t];
+dexprfloatretail_cost=sum(rinrel,tintim:t>=1)crr[r][t]
+						+sum(rinrel,tintim:t>=1)cmr[r][t]
+						+sum(iinpro,rinrel,tintim:t>=1)chr*price[i][t]*air[i][r][t];
+dexprfloatrevenue=sum(iinpro,rinrel,tintim:t>=1)price[i][t]*sale[i][r][t];
+
+//---objective---//
+maximizerevenue-supplier_cost-warehouse_cost-retail_cost;
+
+//---constraints---//
+subjectto
+{
+	C1:
+	forall(iinpro,sinsup,tintim:t>=1)
+		sum(winwar)qw[i][s][w][t]<=caps[i][s][t];
+	C2:
+	sum(linlev,iinpro,tintim:t>=1)cm[l][i]*m[l][i][t]<=b;
+	
+	C3:
+	forall(iinpro,winwar,tintim:t>=1)
+		iw[i][w][t]==iw[i][w][t-1]+sum(sinsup)qw[i][s][w][t]-sum(rinrel)qr[i][w][r][t];
+	C4:
+	forall(iinpro,winwar,tintim:t>=1)
+		aiw[i][w][t]==(iw[i][w][t]+iw[i][w][t-1]-sum(sinsup)qw[i][s][w][t])*0.5;
+	C5:
+	forall(winwar,tintim:t>=1)
+		sum(iinpro)aiw[i][w][t]<=capw[w];
+	C6:
+	forall(iinpro,rinrel,tintim:t>=1)
+		ir[i][r][t]==ir[i][r][t-1]+sum(winwar)qr[i][w][r][t]-sale[i][r][t];
+	C7:
+	forall(iinpro,rinrel,tintim:t>=1)
+		air[i][r][t]==(ir[i][r][t]+ir[i][r][t-1]+sum(winwar)qr[i][w][r][t])*0.5;
+	C8:
+	forall(rinrel,tintim:t>=1)
+		sum(iinpro)air[i][r][t]<=capr[r];
+	C9:
+	forall(linlev,iinpro,rinrel,tintim:t>=1)
+		demand[i][r][t]*(1+em[l][i]*m[l][i][t])==lostsale[i][r][t]+sale[i][r][t];
+}
