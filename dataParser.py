@@ -207,13 +207,25 @@ class NodeData :
 	def sliderList(self):
 		sliderLabel = {}
 		dimension = len(self.child)
-		if True:
-			for x in range(dimension):
-				for y in range(dimension):
-					if x == y :
-						continue
-					name = self.child[x].name + KW_MATRIX_SEP + self.child[y].name
-					sliderLabel[name] = self.matrix[x][y]
+		if dimension > 0 :
+			if 'ATLS' in self.child[0].name :
+				for x in range(dimension):
+					for y in range(dimension):
+						if x == y :
+							continue
+						name = self.child[x].name + KW_MATRIX_SEP + self.child[y].name
+						sliderLabel[name] = self.matrix[x][y]
+			else :
+				for x in range(dimension):
+					for y in range(dimension):
+						if x == y :
+							continue
+						name = self.child[x].name + KW_MATRIX_SEP + self.child[y].name
+						reverse = self.child[y].name + KW_MATRIX_SEP + self.child[x].name
+						if reverse not in sliderLabel :
+							sliderLabel[name] = self.matrix[x][y]
+
+				
 		
 		return sliderLabel
 		

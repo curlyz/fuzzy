@@ -16,18 +16,19 @@ def rand():
 import function as func
 dictionary ={
 		'one':(1,1,1),
-		'eqx':(1,1,3),
+		# 'eqx':(1,1,3),
 		'wkx':(1,3,5),
 		'esx':(3,5,7),
 		'vsx':(5,7,9),
 		'abx':(7,9,9),
-		'eqr':func.invfuzzy((1,1,3)),
+		# 'eqr':func.invfuzzy((1,1,3)),
 		'wkr':func.invfuzzy((1,3,5)),
 		'esr':func.invfuzzy((3,5,7)),
 		'vsr':func.invfuzzy((5,7,9)),
 		'abr':func.invfuzzy((7,9,9))
 }
-mapping = ['one','eqx','wkx','esx','vsx','abx','eqr','wkr','esr','vsr','abr']
+mapping = ['one','wkx','esx','vsx','abx','wkr','esr','vsr','abr']
+# mapping = ['one','eqx','wkx','esx','vsx','abx','eqr','wkr','esr','vsr','abr']
 
 
 class Controller(QWidget):

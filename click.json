@@ -1,1 +1,1 @@
-{'name': 'O', 'matrix': [[4, 4], [4, 4]], 'level': 0, 'child': [Node(asd), Node(bsa)], 'isManufacturer': False, 'parent': None}
+{'name': 'Quantity/year', 'matrix': [[0, 2, 2], [7, 0, 7], [7, 2, 0]], 'level': 2, 'child': [Node(ATLS0), Node(ATLS1), Node(ATLS2)], 'isManufacturer': False, 'parent': Node(Capacity)}

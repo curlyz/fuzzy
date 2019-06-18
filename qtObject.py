@@ -23,7 +23,8 @@ class SpinBox(QWidget):
 
 
 class LabeledSlider(QWidget):
-	FUZZY_LABELS = ["⅑","⅐","⅕","⅓","1","3","5","7","9"]
+	FUZZY_LABELS = [str(i) for i in range(1,10)]
+	# FUZZY_LABELS = ["⅑","⅐","⅕","⅓","1","3","5","7","9"]
 	def __init__(self,name='Hello',manufacturers = [], minimum=0, maximum=8, interval=1, orientation=Qt.Horizontal,
 			labels=FUZZY_LABELS, parent=None):
 		super(LabeledSlider, self).__init__(parent=parent)
