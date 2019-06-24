@@ -48,6 +48,7 @@ def setColumnWidth(obj):
 worksheet1 = workbook.add_worksheet('Weigth Calculation')
 worksheet2 = workbook.add_worksheet('Raw Calculation Step2')
 worksheet3 = workbook.add_worksheet('Consistency')
+worksheet4 = workbook.add_worksheet('Result')
 setColumnWidth([worksheet1,worksheet2,worksheet3])
 currentRow = 0
 currentColumn = 0
@@ -100,6 +101,13 @@ print('NODE CALCULATION')
 kq = func.node_calculation('O',refine_data)
 print("==========result============")
 print("kq ====", kq)
+
+# Write Result to Excel 
+worksheet4.write(0,0,'Result',name_format)
+for x in range(len(kq)):
+	for y in range(len(kq[0])):
+		worksheet4.write(x,y,kq[x][y])
+
 print("kq", func.normalize_fuzzy(kq))
 print("==========checking consistency============")
 

@@ -4,9 +4,7 @@ import csv,json
 path = "C:/Users/Curly/Desktop/fuzzy/expert1.txt"
 
 
-mapping = ['one','eqx','wkx','esx','vsx','abx','eqr','wkr','esr','vsr','abr']
-
-
+mapping = ['abr','vsr','esr','wkr','one','wkx','esx','vsx','abx']
 
 def convertToJson(file):
 	# Space in CSV File ??
@@ -175,6 +173,7 @@ class NodeData :
 
 	def __setitem__(self,index,value):
 		# Set the value of # Barecost vs Money => matrix[0][1]
+		print('[DEUBG] SetItem , ' , self.name, str(self.matrix))
 		arg = index.split(KW_MATRIX_SEP)
 		child1 = None
 		child2 = None
@@ -187,7 +186,12 @@ class NodeData :
 		if child1 == None or child2 == None :
 			raise ValueError('Cant find' , self.__str__() , arg)
 		self.matrix[child1][child2] = value
-		print('[TRACE]' , 'set value' , index , value )
+		# Patch : Set opposite value only if its child is not atls
+		if True :#REPATCH not 'ATLS' in child.name :
+			reverseValue = len(mapping) - value - 1
+			self.matrix[child2][child1] = reverseValue
+			print('[DEUBG] SetItem , ' , self.name , str(self.matrix))
+			print()
 
 	def __getitem__(self,index):
 		child1 = None
@@ -208,7 +212,7 @@ class NodeData :
 		sliderLabel = {}
 		dimension = len(self.child)
 		if dimension > 0 :
-			if 'ATLS' in self.child[0].name :
+			if False: # REPATCH 'ATLS' in self.child[0].name :
 				for x in range(dimension):
 					for y in range(dimension):
 						if x == y :

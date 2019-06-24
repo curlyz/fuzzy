@@ -27,7 +27,7 @@ dictionary ={
 		'vsr':func.invfuzzy((5,7,9)),
 		'abr':func.invfuzzy((7,9,9))
 }
-mapping = ['one','wkx','esx','vsx','abx','wkr','esr','vsr','abr']
+mapping = ['abr','vsr','esr','wkr','one','wkx','esx','vsx','abx']
 # mapping = ['one','eqx','wkx','esx','vsx','abx','eqr','wkr','esr','vsr','abr']
 
 
@@ -183,12 +183,27 @@ class Controller(QWidget):
 		
 		for widget in items:
 			criteria[widget.name] = widget.getValue()
+			print('[DEBUG]' , 'Set' , widget.name , 'to' , widget.getValue())
+
+		if False :
+			#Patch , opposite position
+			reverseValue = len(mapping) - widget.getValue() -1 
+			r = widget.name.split(' vs ')
+			r.reverse()
+			reverseNode = ' vs '.join(r)
+			criteria[reverseNode] = reverseValue
+			print('updateReverseNode'  )
+
+		
 
 		self.debug(self.criteriaWeight)
 
 	def debug(self,d):
 		with open('debug.json','w') as f :
-			f.write(str(d))
+			newObj = {}
+			for node , data in d.items():
+				newObj[node] = data.matrix
+			f.write(json.dumps(newObj,indent=4))
 		
 
 	def onSingleClick(self,evt):
@@ -250,7 +265,7 @@ class Controller(QWidget):
 		if True :
 			dlg = FileDialog()
 			path = dlg.response
-		#path = r'C:\Users\Curly\Desktop\fuzzy\QBL03_code\QBL03\Manufacturer.txt'
+		#path = r'C:\Users\Curly\Documents\GitHub\fuzzy\QBL03_code\QBL03\Manufacturer.txt'
 		self.tree.clear()
 
 		topNode , allNode = toEvn(path)
